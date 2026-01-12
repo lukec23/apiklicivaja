@@ -1,10 +1,11 @@
 import requests
 
 
-call = requests.get("https://restcountries.com/v3.1/all?fields=name,borders,languages,continents,population").json()
+#call = requests.get("https://restcountries.com/v3.1/all?fields=name,borders,languages,continents,population").json()
 
 # 1: Poišči državo z največ sosedi (borders)
 # Namig: Nekatere države so otoki in nimajo ključa "borders"!
+"""
 print(call[0])
 
 max_b=0
@@ -30,7 +31,7 @@ for c in call:
         max_jezik_country=name
 
 print(max_j,max_jezik_country)
-
+"""
 
 # 3: Izračunaj povprečno število prebivalcev (population) po celinah (continents)
 # Namig: Vedno preveri, če je population večji od 0
@@ -44,9 +45,20 @@ print(max_j,max_jezik_country)
 # Namig: Uporabi ["name"]["common"] za ime države
 
 # 6: Izpiši število držav, ki imajo za uradni jezik angleščino
+"""call = requests.get("https://restcountries.com/v3.1/all?fields=name,languages").json()
+
+x = 0
+for i in call:
+    bord=i["languages"]
+    if "eng" in bord:
+        x+=1
+print(x)
+"""
 
 # 7: V katerem časovnem pasu (timezone) je največ držav?
 # Namig: Ena država ima lahko več timezone-ov
+call = requests.get("https://restcountries.com/v3.1/all?fields=name,timezones").json()
+
 
 # 8: Katera črka se največkrat pojavi kot prva črka v imenu države?
 # Namig: Za ime uporabi ["name"]["common"].lower()
